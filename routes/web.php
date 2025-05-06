@@ -5,6 +5,7 @@ use App\Http\Controllers\TaskController;
 // use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\SchoolController;
 
 
 Route::get('/', function () {
@@ -47,3 +48,18 @@ Route::get('/book', [BookController::class, 'showbooks']);
 Route::post('/savebooks', [BookController::class, 'saveBook']);
 
  
+ 
+Route::get('/school-form', [SchoolController::class, 'create']);
+Route::post('/save-school', [SchoolController::class, 'store']);
+Route::get('/schools', [SchoolController::class, 'show']); // to fetch and display schools
+
+
+Route::get('school/edit/{id}', [SchoolController::class, 'edit']);
+
+
+Route::delete('school/delete/{id}', [SchoolController::class, 'destroy']);
+Route::put('school/update/{id}', [SchoolController::class, 'update']);  // Update action
+
+// Route::put('school/update/{id}', [SchoolController::class, 'update']);
+
+
