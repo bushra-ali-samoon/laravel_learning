@@ -62,7 +62,7 @@ public function update(Request $request, $id)
 
 public function destroy($id)
 {
-    $school = School::findOrFail($id);
+    $school = School::find($id);
     $school->delete();
     return 'success School deleted successfully!';
 }

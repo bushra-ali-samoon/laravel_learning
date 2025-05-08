@@ -16,6 +16,7 @@ return new class extends Migration
                 $table->string('name');
                 $table->string('email');
                 $table->string('password');
+                $table->foreignId('class_id')->constrained(); // This adds the class_id column
                 $table->timestamps();
             });
         }
