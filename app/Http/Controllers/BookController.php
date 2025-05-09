@@ -12,7 +12,7 @@ class BookController extends Controller
     // Show the student registration form
     public function showbooks()
     {
-        return view('books.form'); // Make sure the view file exists
+        return view('books.form');  
     }
 
     // Save the student to database
@@ -22,7 +22,7 @@ class BookController extends Controller
             $book = new Book;
             $book->title = $request->title;
             $book->author = $request->author;
-            $book->genre = $request->genre; // ✅ Set genre
+            $book->genre = $request->genre;  
             $book->save();
         
             return "Book saved successfully!";
