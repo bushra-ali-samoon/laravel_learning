@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Users;
-// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class loginController extends Controller
 {
@@ -15,6 +15,18 @@ class loginController extends Controller
         return view('user.signup');
 
     }
+
+
+     public function showlogin()
+    {
+
+        return view('user.login');
+
+    }
+
+    
+
+
    
     public function store(Request $request)
     {
@@ -27,5 +39,19 @@ class loginController extends Controller
         $user->save();
         return ('user save ');
     }
+    public function login(Request $request)
+    {
 
+        $credentials = $request->only('email', 'password');
+    
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('account') ;
+        } else {
+            return back()->withErrors(['message' => 'Invalid credentials']);
+        }
+    }
+     public function account()
+ {
+     return view('user.account');
+ }
 }

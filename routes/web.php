@@ -126,3 +126,9 @@ Route::post('/user/save', [loginController::class, 'store']) ;
 // Route::get('/user/login', function () {
 //     return view('login');
 // });
+
+Route::get('/user/login', [loginController::class, 'showlogin']);
+Route::post('/user/auth', [loginController::class, 'login']);
+
+Route::get('/user/account', [loginController::class, 'account'])->name('account');
+
