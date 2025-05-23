@@ -15,9 +15,9 @@ use App\Http\Controllers\loginController;
 // });
 // // ,
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // // Route::get('/about', function () {
 // //     return view('about');
@@ -113,22 +113,37 @@ Route::get('/', function () {
 // Route::delete('/student/delete/{id}', [StudentController::class, 'destroy']);
 
 
-Route::get('/user/add', [loginController::class, 'showUserLogin']);
-function p($data)
-{
-    echo "<pre>";
-    print_r($data);
-    die();
-}
 
-Route::post('/user/save', [loginController::class, 'store']) ;
-// Route::get('/user/login', [loginController::class, 'login']);
-// Route::get('/user/login', function () {
-//     return view('login');
-// });
+/// routes for login signup and view account 
+// Route::get('/user/add', [loginController::class, 'showUserLogin']);
+// function p($data)
+// {
+//     echo "<pre>";
+//     print_r($data);
+//     die();
+// }
 
-Route::get('/user/login', [loginController::class, 'showlogin']);
-Route::post('/user/auth', [loginController::class, 'login']);
+// Route::post('/user/save', [loginController::class, 'store']) ;
+// // Route::get('/user/login', [loginController::class, 'login']);
+// // Route::get('/user/login', function () {
+// //     return view('login');
+// // });
 
-Route::get('/user/account', [loginController::class, 'account'])->name('account');
+// Route::get('/user/login', [loginController::class, 'showlogin']);
+// Route::post('/user/auth', [loginController::class, 'login']);
 
+// Route::get('/user/account', [loginController::class, 'account'])->name('account');
+
+
+
+// Applying middleware individually to routes
+Route::view('home', 'home')->middleware('check1'); // Applies 'check1' middleware to 'home' route
+Route::view('about', 'about')->middleware('check1'); // Applies 'check1' middleware to 'about' route
+
+// Grouping multiple routes under a single middleware
+Route::middleware('check1')->group(function () {
+    Route::view('home', 'home');    // 'check1' middleware applied to this route
+    Route::view('about', 'about'); // 'check1' middleware applied to this route
+    Route::view('contact', 'home'); // 'check1' middleware applied to 'contact' route, uses 'home' view
+    Route::view('list', 'about');  // 'check1' middleware applied to 'list' route, uses 'about' view
+});
