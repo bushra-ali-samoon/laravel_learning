@@ -8,4 +8,11 @@ class Users extends Model
 {
     //
     protected $table = 'users';
+// public function todoLists()
+// {
+//     return $this->hasMany(TodoList::class);
+// }
+
+
 }
+ 

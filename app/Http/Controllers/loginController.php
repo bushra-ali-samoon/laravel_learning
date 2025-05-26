@@ -39,17 +39,18 @@ class loginController extends Controller
         $user->save();
         return ('user save ');
     }
-    public function login(Request $request)
-    {
+  
+   public function login(Request $request)
+{
+    $credentials = $request->only('email', 'password');
 
-        $credentials = $request->only('email', 'password');
-    
-        if (Auth::attempt($credentials)) {
-            return redirect()->route('account') ;
-        } else {
-            return back()->withErrors(['message' => 'Invalid credentials']);
-        }
+    if (Auth::attempt($credentials)) {
+        return redirect()->route('todos.index');
+    } else {
+        return back()->withErrors(['message' => 'Invalid credentials']);
     }
+}
+
      public function account()
  {
      return view('user.account');

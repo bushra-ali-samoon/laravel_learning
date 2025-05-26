@@ -9,6 +9,8 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\ClassRoomController;
 
 use App\Http\Controllers\loginController;
+use App\Http\Controllers\TodoController;
+
 
 // Route::get('hello', function () {
 //     return 'hello';
@@ -115,24 +117,24 @@ use App\Http\Controllers\loginController;
 
 
 /// routes for login signup and view account 
-// Route::get('/user/add', [loginController::class, 'showUserLogin']);
-// function p($data)
-// {
-//     echo "<pre>";
-//     print_r($data);
-//     die();
-// }
+Route::get('/user/add', [loginController::class, 'showUserLogin']);
+function p($data)
+{
+    echo "<pre>";
+    print_r($data);
+    die();
+}
 
-// Route::post('/user/save', [loginController::class, 'store']) ;
-// // Route::get('/user/login', [loginController::class, 'login']);
-// // Route::get('/user/login', function () {
-// //     return view('login');
-// // });
+Route::post('/user/save', [loginController::class, 'store']) ;
+Route::get('/user/login', [loginController::class, 'login']);
+Route::get('/user/login', function () {
+     return view('login');
+});
 
 // Route::get('/user/login', [loginController::class, 'showlogin']);
-// Route::post('/user/auth', [loginController::class, 'login']);
+Route::post('/user/auth', [loginController::class, 'login']);
 
-// Route::get('/user/account', [loginController::class, 'account'])->name('account');
+Route::get('/user/account', [loginController::class, 'account'])->name('account');
 
 
 
@@ -146,4 +148,22 @@ Route::middleware('check1')->group(function () {
     Route::view('about', 'about'); // 'check1' middleware applied to this route
     Route::view('contact', 'home'); // 'check1' middleware applied to 'contact' route, uses 'home' view
     Route::view('list', 'about');  // 'check1' middleware applied to 'list' route, uses 'about' view
+});
+    Route::get('/user/login', [loginController::class, 'showlogin']);
+    Route::post('/user/auth', [loginController::class, 'login']);
+
+
+// Route::get('/todos', [TodoController::class, 'index'])->name('todos.index');         // Show all todos
+// Route::get('/todos/create', [TodoController::class, 'create'])->name('todos.create'); // Show form
+// Route::post('/todos', [TodoController::class, 'store'])->name('todos.store');         // Store new task
+// Route::get('/todos/{id}/edit', [TodoController::class, 'edit'])->name('todos.edit');  // Show edit form
+// Route::put('/todos/{id}', [TodoController::class, 'update'])->name('todos.update');   // Update task
+// Route::delete('/todos/{id}', [TodoController::class, 'destroy'])->name('todos.destroy'); // Delete task
+Route::middleware('auth')->group(function () {
+Route::get('/todos', [TodoController::class, 'index'])->name('todos.index');         // Show all todos
+Route::get('/todos/create', [TodoController::class, 'create'])->name('todos.create'); // Show form
+Route::post('/todos', [TodoController::class, 'store'])->name('todos.store');         // Store new task
+Route::get('/todos/{id}/edit', [TodoController::class, 'edit'])->name('todos.edit');  // Show edit form
+Route::put('/todos/{id}', [TodoController::class, 'update'])->name('todos.update');   // Update task
+Route::delete('/todos/{id}', [TodoController::class, 'destroy'])->name('todos.destroy'); // Delete task});
 });
