@@ -56,7 +56,11 @@ use App\Http\Controllers\TodoController;
 // Route::get('/book', [BookController::class, 'showbooks']);
 // Route::post('/savebooks', [BookController::class, 'saveBook']);
 
- 
+ Route::get('/books', [BookController::class, 'allBooks']);
+Route::get('/books/author/{name}', [BookController::class, 'booksByAuthor']);
+Route::post('/books/save', [BookController::class, 'saveBook']);
+Route::put('/books/update/{id}', [BookController::class, 'updateBook']);
+
  
 // Route::get('/school-form', [SchoolController::class, 'create']);
 // Route::post('/save-school', [SchoolController::class, 'store']);
@@ -165,5 +169,5 @@ Route::get('/todos/create', [TodoController::class, 'create'])->name('todos.crea
 Route::post('/todos', [TodoController::class, 'store'])->name('todos.store');         // Store new task
 Route::get('/todos/{id}/edit', [TodoController::class, 'edit'])->name('todos.edit');  // Show edit form
 Route::put('/todos/{id}', [TodoController::class, 'update'])->name('todos.update');   // Update task
-Route::delete('/todos/{id}', [TodoController::class, 'destroy'])->name('todos.destroy'); // Delete task});
+Route::delete('/todos/{id}', [TodoController::class, 'destroy'])->name('todos.destroy'); // Delete task
 });

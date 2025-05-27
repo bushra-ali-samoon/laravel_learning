@@ -30,7 +30,6 @@ class loginController extends Controller
    
     public function store(Request $request)
     {
-        print_r($request->all());
 
         $user = new Users;
         $user->name = $request->name;

@@ -10,7 +10,5 @@ class Todo extends Model
 {
 protected $fillable = ['task'];
 
-    // use HasFactory;
-
-    //  protected $fillable = ['title', 'description'];
+    
 }

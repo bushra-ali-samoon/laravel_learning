@@ -5,15 +5,6 @@
 </head>
 <body>
     <h1>Add New Task</h1>
-<!-- 
-    @if ($errors->any())
-        <ul style="color:red;">
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif -->
-
   <form action="{{ route('todos.store') }}" method="POST">
     @csrf
     <input type="text" name="task" placeholder="Enter Task" required>
