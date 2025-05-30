@@ -11,6 +11,7 @@ use App\Http\Controllers\ClassRoomController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\TodoController;
 
+use App\Http\Controllers\LayoutsController;
 
 // Route::get('hello', function () {
 //     return 'hello';
@@ -171,3 +172,9 @@ Route::get('/todos/{id}/edit', [TodoController::class, 'edit'])->name('todos.edi
 Route::put('/todos/{id}', [TodoController::class, 'update'])->name('todos.update');   // Update task
 Route::delete('/todos/{id}', [TodoController::class, 'destroy'])->name('todos.destroy'); // Delete task
 });
+
+
+ 
+Route::get('/home', [LayoutsController::class, 'home']);
+Route::get('/about', [LayoutsController::class, 'about']);
+Route::get('/blog', [LayoutsController::class, 'blog']);
